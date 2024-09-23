@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Formatter</title>
+    <link rel="shortcut icon" href="assets/1.png" type="image/x-icon">
+    <link href="custom.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@11/dist/handsontable.full.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Konten Utama -->
+    <div class="content container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6 text-center">Data Formatter</h1>
+        <div class="w-full max-w-xl mx-auto bg-white rounded-lg shadow-lg p-6">
+            <textarea id="inputData" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Masukkan data..." rows="5"></textarea>
+            <button class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded-lg transition duration-200" onclick="formatData()">Format Data</button>
+        </div>
+    </div>
+    <h1 class="text-3xl font-bold mb-6 text-center">Result</h1>
+    <div class="container ml-8">
+            <!-- Spreadsheet di bagian bawah dengan lebar penuh -->
+            <div id="spreadsheet" class="mt-6 w-full"></div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script src="loaderNavbar.js"></script>
+    <script src="loaderFooter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handsontable@11/dist/handsontable.full.min.js"></script>
+    <script src="script.js"></script>
+    <script>
+        const container = document.getElementById('spreadsheet');
+        const hot = new Handsontable(container, {
+            data: [],
+            licenseKey: 'non-commercial-and-evaluation',
+            colHeaders: true,
+            rowHeaders: true,
+            width: '100%',
+            height: 300,
+            stretchH: 'all',
+            contextMenu: true,
+            // Opsi lain sesuai kebutuhan
+        });
+
+        function formatData() {
+            const input = document.getElementById('inputData').value;
+            const rows = input.split('\n').map(row => row.split('\t')); // Misal data dipisahkan dengan tab
+            hot.loadData(rows);
+        }
+    </script>
+</body>
+</html>

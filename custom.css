@@ -1,0 +1,16 @@
+body{  
+    font-family: "Ubuntu Sans Mono", monospace !important;
+    display: flex !important;
+    flex-direction: column !important;
+    min-height: 100vh !important; /* Pastikan body mengisi seluruh tinggi viewport */
+}
+
+
+.content {
+    flex: 1 !important; /* Buat konten mengambil sisa ruang */
+}
+
+.active {
+    background-color: #4a5568 !important; /* Contoh warna latar belakang */
+    color: white !important; /* Warna teks */
+}

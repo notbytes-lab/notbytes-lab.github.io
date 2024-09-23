@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notBytes Labs</title>
+    <link rel="shortcut icon" href="assets/1.png" type="image/x-icon">
+    <link href="custom.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+</head>
+<body class="bg-gray-100">
+
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Landing Page Content -->
+    <div class="content container mx-auto p-6">
+        <h1 class="text-4xl font-bold text-center mb-12 mt-6">Welcome to notBytes Labs, Lads!</h1>
+
+        <!-- Grid untuk Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Card 1: Data Formatter -->
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 relative bg-cover bg-center" style="background-image: url('assets/data.svg');background-size: 100px;background-repeat: no-repeat;background-position: right;background-position-y: bottom;">
+                <h2 class="text-2xl font-bold mb-4">Data Formatter</h2>
+                <p class="text-gray-600 mb-4">Tool untuk memformat data dengan separator. Pisahkan angka menjadi sel terpisah di spreadsheet.</p>
+                <a href="dataFormater.html" class="text-blue-500 font-bold hover:underline">Go to Tool</a>
+            </div>
+            
+            <!-- Card 2: Tool 2 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 relative bg-cover bg-center" style="background-image: url('assets/date.svg');background-size: 100px;background-repeat: no-repeat;background-position: right;background-position-y: bottom;">
+                <h2 class="text-2xl font-bold mb-4">Date Diff Calculate</h2>
+                <p class="text-gray-600 mb-4">Tool untuk mencari selisih dari hari.</p>
+                <a href="dateDiffCall.html" class="text-blue-500 font-bold hover:underline">Go to Tool</a>
+            </div>
+
+            <!-- Card 3: Tool 3 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 relative bg-cover bg-center" style="background-image: url('assets/time.svg');background-size: 100px;background-repeat: no-repeat;background-position: right;background-position-y: bottom;">
+                <h2 class="text-2xl font-bold mb-4">Time Formatter</h2>
+                <p class="text-gray-600 mb-4">Konversi Waktu Masukkan waktu (pisahkan dengan koma, setiap waktu di dalam tanda kutip dan di baris baru)</p>
+                <a href="timeFormatter.html" class="text-blue-500 font-bold hover:underline">Go to Tool</a>
+            </div>
+
+            <!-- Card 4: Tool 4 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 relative bg-cover bg-center" style="background-image: url('assets/soon.svg');background-size: 100px;background-repeat: no-repeat;background-position: right;background-position-y: bottom;">
+                <h2 class="text-2xl font-bold mb-4">Exclu Feat</h2>
+                <p class="text-gray-600 mb-4">YTTA</p>
+                <a href="exclusiveFeature.html" class="text-blue-500 font-bold hover:underline">Feel the Exclusive Feature Soultan</a>
+            </div>
+
+            <!-- Card 5: Tool 5 -->
+            <div class="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition duration-300 relative bg-cover bg-center" style="background-image: url('assets/soon.svg');background-size: 100px;background-repeat: no-repeat;background-position: right;background-position-y: bottom;">
+                <h2 class="text-2xl font-bold mb-4">Coming Soon</h2>
+                <p class="text-gray-600 mb-4">Stay inside.</p>
+                <a href="#" class="text-blue-500 font-bold hover:underline">Sabar...</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script src="loaderNavbar.js"></script>
+    <script src="loaderFooter.js"></script>
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Diff Calculate</title>
+    <link rel="shortcut icon" href="assets/1.png" type="image/x-icon">
+    <link href="custom.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu+Sans+Mono:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable@11/dist/handsontable.full.min.css">
+</head>
+<body class="bg-gray-100 min-h-screen">
+    <!-- Navbar -->
+    <div id="navbar-placeholder"></div>
+
+    <!-- Konten Utama -->
+    <div class="content container mx-auto p-6">
+        <h1 class="text-3xl font-bold mb-6 text-center">Data Formatter</h1>
+        
+        <p id="currentDate" class="text-xl font-bold mb-4"></p>
+        
+        <div class="mb-4">
+            <label for="backdateInput" class="block text-lg mb-2">Enter the backdate data in DD-MM-YYYY format:</label>
+            <div class="relative max-w-sm">
+                <div class="absolute inset-y-0 start-0 flex items-center pl-3 pointer-events-none">
+                <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
+                    </svg>
+                </div>
+                <input id="backdateInput" datepicker datepicker-autohide datepicker-format="dd-mm-yyyy" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full pl-10 p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Select date">
+            </div>
+        
+        </div>
+        <button onclick="calculateDifference()" class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-600">
+            Calculate
+        </button>
+    
+        <p id="result" class="mt-4 text-lg font-semibold"></p>
+    </div>
+
+    <!-- Footer -->
+    <div id="footer"></div>
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.1/dist/flowbite.min.js"></script>
+    <script src="calculateDate.js"></script>
+    <script src="loaderNavbar.js"></script>
+    <script src="loaderFooter.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/handsontable@11/dist/handsontable.full.min.js"></script>
+    <script src="script.js"></script>
+    
+    <script>
+        const container = document.getElementById('spreadsheet');
+        const hot = new Handsontable(container, {
+            data: [],
+            licenseKey: 'non-commercial-and-evaluation',
+            colHeaders: true,
+            rowHeaders: true,
+            width: '100%',
+            height: 300,
+            stretchH: 'all',
+            contextMenu: true,
+            // Opsi lain sesuai kebutuhan
+        });
+
+        function formatData() {
+            const input = document.getElementById('inputData').value;
+            const rows = input.split('\n').map(row => row.split('\t')); // Misal data dipisahkan dengan tab
+            hot.loadData(rows);
+        }
+    </script>
+</body>
+</html>
