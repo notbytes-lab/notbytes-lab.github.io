@@ -16,7 +16,7 @@
     <!-- Navbar -->
     <div id="navbar-placeholder"></div>
 
-    <!-- Konten Utama -->
+    <!-- Main Content -->
     <div class="content container mx-auto p-6">
         <h2>Konversi Waktu</h2>
         <form id="timeForm">
@@ -30,11 +30,15 @@
         <button id="copyButton" onclick="copyToClipboard()" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 mt-3 hidden">Copy to Clipboard</button>
     </div>
 
-    <!-- Notification Modal -->
-    <div id="notification" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-blue-500 text-white rounded-lg shadow-lg opacity-0 transition-opacity duration-300 ease-in-out hidden w-80 text-center">
-        <p>Text copied to clipboard!</p>
+    <!-- Modal Notification -->
+    <div id="modal-notification" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full text-center">
+            <h3 class="text-lg font-semibold mb-4">Notification</h3>
+            <p>Text copied to clipboard!</p>
+            <button onclick="closeModal()" class="bg-red-500 text-white font-bold py-2 px-4 rounded mt-4 hover:bg-red-600">Close</button>
+        </div>
     </div>
-    
+
     <!-- Footer -->
     <div id="footer"></div>
     <script src="loaderNavbar.js"></script>
@@ -63,25 +67,18 @@
             // Copy result to clipboard
             let textToCopy = document.getElementById('output').innerText;
             navigator.clipboard.writeText(textToCopy).then(() => {
-                showNotification(); // Show notification when copied
+                showModal(); // Show modal when copied
             }).catch(err => {
                 console.error('Failed to copy text: ', err);
             });
         }
 
-        function showNotification() {
-            const notification = document.getElementById('notification');
-            notification.classList.remove('hidden');
-            notification.classList.add('opacity-100');
+        function showModal() {
+            document.getElementById('modal-notification').classList.remove('hidden');
+        }
 
-            // Hide notification after 3 seconds
-            setTimeout(() => {
-                notification.classList.add('opacity-0');
-                setTimeout(() => {
-                    notification.classList.add('hidden');
-                    notification.classList.remove('opacity-100');
-                }, 300); // Matches the transition duration
-            }, 3000);
+        function closeModal() {
+            document.getElementById('modal-notification').classList.add('hidden');
         }
     </script>
 </body>
