@@ -74,11 +74,18 @@
         }
 
         function showModal() {
-            document.getElementById('modal-notification').classList.remove('hidden');
+            const modal = document.getElementById('modal-notification');
+            modal.classList.remove('hidden'); // Show the modal
+    
+            // Set timeout to automatically close the modal after 3 seconds (3000 ms)
+            setTimeout(() => {
+                closeModal();
+            }, 3000); // 3000 milliseconds = 3 seconds
         }
-
+    
         function closeModal() {
-            document.getElementById('modal-notification').classList.add('hidden');
+            const modal = document.getElementById('modal-notification');
+            modal.classList.add('hidden'); // Hide the modal
         }
     </script>
 </body>
