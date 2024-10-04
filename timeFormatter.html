@@ -26,9 +26,15 @@
         </form>
     
         <h3>Hasil:</h3>
-        <p id="output"></p>
+        <p id="output" class="border p-3 bg-gray-200"></p>
+        <button id="copyButton" onclick="copyToClipboard()" class="bg-green-500 text-white font-bold py-2 px-4 rounded hover:bg-green-600 mt-3 hidden">Copy to Clipboard</button>
     </div>
 
+    <!-- Notification Modal -->
+    <div id="notification" class="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-4 bg-blue-500 text-white rounded-lg shadow-lg opacity-0 transition-opacity duration-300 ease-in-out hidden w-80 text-center">
+        <p>Text copied to clipboard!</p>
+    </div>
+    
     <!-- Footer -->
     <div id="footer"></div>
     <script src="loaderNavbar.js"></script>
@@ -50,7 +56,33 @@
         
             // Menampilkan hasil
             document.getElementById('output').innerText = result;
+            document.getElementById('copyButton').classList.remove('hidden');
         }
-        
+
+        function copyToClipboard() {
+            // Copy result to clipboard
+            let textToCopy = document.getElementById('output').innerText;
+            navigator.clipboard.writeText(textToCopy).then(() => {
+                showNotification(); // Show notification when copied
+            }).catch(err => {
+                console.error('Failed to copy text: ', err);
+            });
+        }
+
+        function showNotification() {
+            const notification = document.getElementById('notification');
+            notification.classList.remove('hidden');
+            notification.classList.add('opacity-100');
+
+            // Hide notification after 3 seconds
+            setTimeout(() => {
+                notification.classList.add('opacity-0');
+                setTimeout(() => {
+                    notification.classList.add('hidden');
+                    notification.classList.remove('opacity-100');
+                }, 300); // Matches the transition duration
+            }, 3000);
+        }
     </script>
+</body>
 </html>
